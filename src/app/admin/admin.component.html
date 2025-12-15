@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Panel de Administración</h2>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.tipo }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuario.email)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="text-center mb-4 mt-5">Ventas Realizadas</h4>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Precio</th>
+        <th>Unidades Vendidas</th>
+        <th>Total</th>
+        <th>Mes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of ventas">
+        <td>{{ venta.id }}</td>
+        <td>{{ venta.nombre }}</td>
+        <td>{{ venta.categoria }}</td>
+        <td>{{ venta.precio}}</td>
+        <td>{{ venta.unidades_vendidas }}</td>
+        <td>{{ venta.ingreso_total}}</td>
+        <td>{{ venta.mejor_mes_venta}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+

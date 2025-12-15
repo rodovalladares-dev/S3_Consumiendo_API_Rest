@@ -1,0 +1,980 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CategoriaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/categoria/categoria.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de mostrar los juegos pertenecientes
+a una categoría seleccionada por el usuario.</p>
+<p>Este componente:</p>
+<ul>
+<li>Lee la categoría desde la URL</li>
+<li>Carga los juegos asociados desde un objeto interno</li>
+<li>Permite agregar productos al carrito</li>
+<li>Valida que el usuario esté logueado antes de comprar</li>
+</ul>
+<p>Este componente se usa en conjunto con las rutas del sitio.
+La URL contiene un parámetro llamado &quot;nombre&quot;, el cual indica
+la categoría seleccionada (ej: /categoria/deportes).</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-categoria</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./categoria.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./categoria.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categoria" >categoria</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#datos" >datos</a>
+                            </li>
+                            <li>
+                                <a href="#juegos" >juegos</a>
+                            </li>
+                            <li>
+                                <a href="#sesion" >sesion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#agregarAlCarrito" >agregarAlCarrito</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/categoria/categoria.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Permite obtener parámetros de la ruta activa.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de autenticación para validar sesión.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Router utilizado para navegar entre rutas.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarAlCarrito"></a>
+                    <span class="name">
+                        <span ><b>agregarAlCarrito</b></span>
+                        <a href="#agregarAlCarrito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarAlCarrito(juego: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/categoria/categoria.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Agrega un juego al carrito del usuario.
+Solo los usuarios logueados como &quot;usuario&quot; pueden agregar productos.</p>
+<ul>
+<li>título</li>
+<li>imagen</li>
+<li>precio</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">agregarAlCarrito({ titulo: &#39;FIFA&#39;, precio: 29990 });</code></pre></div><ul>
+<li>Si el usuario no está logueado, se muestra una alerta.</li>
+<li>El carrito se guarda en localStorage bajo la clave carrito_email.</li>
+<li>Si el producto ya está en el carrito, aumenta la cantidad.</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>juego</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto que contiene la información del juego seleccionado:</p>
+<ul>
+<li>título</li>
+<li>imagen</li>
+<li>precio</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/categoria/categoria.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se ejecuta al cargar el componente.</p>
+<ul>
+<li>Carga la sesión del usuario desde localStorage.</li>
+<li>Obtiene el parámetro &quot;nombre&quot; desde la URL.</li>
+<li>Carga los juegos que pertenecen a la categoría seleccionada.</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Si la URL es /categoria/aventura
+this.categoria === &quot;aventura&quot;
+this.juegos === datos[&quot;aventura&quot;]</code></pre></div></div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categoria"></a>
+                    <span class="name">
+                        <span ><b>categoria</b></span>
+                        <a href="#categoria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/categoria/categoria.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Categoría actual seleccionada por el usuario.
+Se obtiene desde los parámetros de la ruta.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datos"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>datos</b></span>
+                        <a href="#datos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    deportes: [
+      { titulo: &#x27;FIFA&#x27;, imagen: &#x27;assets/img/fifa.png&#x27;, precio: 29990 },
+      { titulo: &#x27;TENIS&#x27;, imagen: &#x27;assets/img/tenis.png&#x27;, precio: 19990 }
+    ],
+    aventura: [
+      { titulo: &#x27;Zelda&#x27;, imagen: &#x27;assets/img/zelda.png&#x27;, precio: 39990 },
+      { titulo: &#x27;Mario&#x27;, imagen: &#x27;assets/img/mario.png&#x27;, precio: 29990 }
+    ],
+    disparos: [
+      { titulo: &#x27;Fortnite&#x27;, imagen: &#x27;assets/img/fortnite.png&#x27;, precio: 0 },
+      { titulo: &#x27;Gta V&#x27;, imagen: &#x27;assets/img/gta.png&#x27;, precio: 59990 }
+    ]
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/categoria/categoria.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Objeto que contiene todas las categorías con sus juegos precargados.
+En un proyecto profesional, esta información vendría desde un backend
+o desde un servicio HttpClient.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="juegos"></a>
+                    <span class="name">
+                        <span ><b>juegos</b></span>
+                        <a href="#juegos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/categoria/categoria.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Arreglo de juegos pertenecientes a la categoría seleccionada.
+Cada juego contiene:</p>
+<ul>
+<li>título</li>
+<li>imagen</li>
+<li>precio</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sesion"></a>
+                    <span class="name">
+                        <span ><b>sesion</b></span>
+                        <a href="#sesion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/categoria/categoria.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Información de la sesión del usuario si es que está logueado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../services/auth.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+/**
+ * Componente encargado de mostrar los juegos pertenecientes
+ * a una categoría seleccionada por el usuario.
+ *
+ * Este componente:
+ * - Lee la categoría desde la URL
+ * - Carga los juegos asociados desde un objeto interno
+ * - Permite agregar productos al carrito
+ * - Valida que el usuario esté logueado antes de comprar
+ *
+ * @usageNotes
+ * Este componente se usa en conjunto con las rutas del sitio.
+ * La URL contiene un parámetro llamado &quot;nombre&quot;, el cual indica
+ * la categoría seleccionada (ej: /categoria/deportes).
+ */
+@Component({
+  selector: &#x27;app-categoria&#x27;,
+  templateUrl: &#x27;./categoria.component.html&#x27;,
+  styleUrls: [&#x27;./categoria.component.css&#x27;]
+})
+export class CategoriaComponent implements OnInit {
+
+  /**
+   * Categoría actual seleccionada por el usuario.
+   * Se obtiene desde los parámetros de la ruta.
+   */
+  categoria &#x3D; &#x27;&#x27;;
+
+  /**
+   * Arreglo de juegos pertenecientes a la categoría seleccionada.
+   * Cada juego contiene:
+   *  - título
+   *  - imagen
+   *  - precio
+   */
+  juegos: any[] &#x3D; [];
+
+  /**
+   * Objeto que contiene todas las categorías con sus juegos precargados.
+   * En un proyecto profesional, esta información vendría desde un backend
+   * o desde un servicio HttpClient.
+   */
+  private datos: any &#x3D; {
+    deportes: [
+      { titulo: &#x27;FIFA&#x27;, imagen: &#x27;assets/img/fifa.png&#x27;, precio: 29990 },
+      { titulo: &#x27;TENIS&#x27;, imagen: &#x27;assets/img/tenis.png&#x27;, precio: 19990 }
+    ],
+    aventura: [
+      { titulo: &#x27;Zelda&#x27;, imagen: &#x27;assets/img/zelda.png&#x27;, precio: 39990 },
+      { titulo: &#x27;Mario&#x27;, imagen: &#x27;assets/img/mario.png&#x27;, precio: 29990 }
+    ],
+    disparos: [
+      { titulo: &#x27;Fortnite&#x27;, imagen: &#x27;assets/img/fortnite.png&#x27;, precio: 0 },
+      { titulo: &#x27;Gta V&#x27;, imagen: &#x27;assets/img/gta.png&#x27;, precio: 59990 }
+    ]
+  };
+
+  /**
+   * Información de la sesión del usuario si es que está logueado.
+   */
+  sesion: any &#x3D; null;
+
+  /**
+   * Constructor del componente.
+   *
+   * @param route Permite obtener parámetros de la ruta activa.
+   * @param auth Servicio de autenticación para validar sesión.
+   * @param router Router utilizado para navegar entre rutas.
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private auth: AuthService,
+    private router: Router
+  ) { }
+
+  /**
+   * Se ejecuta al cargar el componente.
+   * - Carga la sesión del usuario desde localStorage.
+   * - Obtiene el parámetro &quot;nombre&quot; desde la URL.
+   * - Carga los juegos que pertenecen a la categoría seleccionada.
+   *
+   * @example
+   * // Si la URL es /categoria/aventura
+   * this.categoria &#x3D;&#x3D;&#x3D; &quot;aventura&quot;
+   * this.juegos &#x3D;&#x3D;&#x3D; datos[&quot;aventura&quot;]
+   */
+  ngOnInit(): void {
+    const sesionStr &#x3D; localStorage.getItem(&#x27;sesion&#x27;);
+    this.sesion &#x3D; sesionStr ? JSON.parse(sesionStr) : null;
+
+    this.route.params.subscribe(params &#x3D;&gt; {
+      this.categoria &#x3D; params[&#x27;nombre&#x27;];
+      this.juegos &#x3D; this.datos[this.categoria] || [];
+    });
+  }
+
+  /**
+   * Agrega un juego al carrito del usuario.
+   * Solo los usuarios logueados como &quot;usuario&quot; pueden agregar productos.
+   *
+   * @param juego Objeto que contiene la información del juego seleccionado:
+   *  - título
+   *  - imagen
+   *  - precio
+   *
+   * @example
+   * agregarAlCarrito({ titulo: &#x27;FIFA&#x27;, precio: 29990 });
+   *
+   * @usageNotes
+   * - Si el usuario no está logueado, se muestra una alerta.
+   * - El carrito se guarda en localStorage bajo la clave carrito_email.
+   * - Si el producto ya está en el carrito, aumenta la cantidad.
+   */
+  agregarAlCarrito(juego: any) {
+    const sesionStr &#x3D; localStorage.getItem(&#x27;sesion&#x27;);
+    const sesion &#x3D; sesionStr ? JSON.parse(sesionStr) : null;
+
+    if (!sesion || sesion.tipo !&#x3D;&#x3D; &#x27;usuario&#x27;) {
+      alert(&#x27;Debes iniciar sesión como usuario para agregar al carrito.&#x27;);
+      return;
+    }
+
+    const claveCarrito &#x3D; &#x27;carrito_&#x27; + sesion.email;
+    const carritoStr &#x3D; localStorage.getItem(claveCarrito);
+    const carrito &#x3D; carritoStr ? JSON.parse(carritoStr) : [];
+
+    const index &#x3D; carrito.findIndex((item: any) &#x3D;&gt; item.nombre &#x3D;&#x3D;&#x3D; juego.titulo);
+
+    if (index &gt;&#x3D; 0) {
+      carrito[index].cantidad++;
+    } else {
+      carrito.push({
+        nombre: juego.titulo,
+        categoria: this.categoria,
+        precio: 29990,
+        cantidad: 1
+      });
+    }
+
+    localStorage.setItem(claveCarrito, JSON.stringify(carrito));
+    alert(&#x27;¡Agregado al carrito con éxito!&#x27;);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;main class&#x3D;&quot;container my-5&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center mb-4 text-capitalize&quot;&gt;Categoría: {{ categoria }}&lt;/h2&gt;
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-md-6 mb-4&quot; *ngFor&#x3D;&quot;let juego of juegos&quot;&gt;
+            &lt;div class&#x3D;&quot;card h-100&quot;&gt;
+                &lt;img [src]&#x3D;&quot;juego.imagen&quot; class&#x3D;&quot;card-img-top&quot; [alt]&#x3D;&quot;juego.titulo&quot;&gt;
+                &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                    &lt;h5 class&#x3D;&quot;card-title&quot;&gt;{{ juego.titulo }}&lt;/h5&gt;
+                    &lt;p class&#x3D;&quot;card-text&quot;&gt;{{ juego.descripcion }}&lt;/p&gt;
+                    &lt;!-- Botón para usuarios logueados tipo &quot;usuario&quot; --&gt;
+                    &lt;button *ngIf&#x3D;&quot;sesion?.logueado &amp;&amp; sesion?.tipo &#x3D;&#x3D;&#x3D; &#x27;usuario&#x27;&quot; class&#x3D;&quot;btn btn-primary mt-2&quot;
+                        (click)&#x3D;&quot;agregarAlCarrito(juego)&quot;&gt;
+                        Agregar al carrito
+                    &lt;/button&gt;
+
+                    &lt;!-- Mensaje si es admin --&gt;
+                    &lt;p *ngIf&#x3D;&quot;sesion?.logueado &amp;&amp; sesion?.tipo &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;&quot; class&#x3D;&quot;text-muted mt-2 fst-italic&quot;&gt;
+                        (Solo los usuarios pueden agregar al carrito)
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./categoria.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><main class="container my-5">    <h2 class="text-center mb-4 text-capitalize">Categoría: {{ categoria }}</h2>    <div class="row">        <div class="col-md-6 mb-4" *ngFor="let juego of juegos">            <div class="card h-100">                <img [src]="juego.imagen" class="card-img-top" [alt]="juego.titulo">                <div class="card-body text-center">                    <h5 class="card-title">{{ juego.titulo }}</h5>                    <p class="card-text">{{ juego.descripcion }}</p>                    <!-- Botón para usuarios logueados tipo "usuario" -->                    <button *ngIf="sesion?.logueado && sesion?.tipo === \'usuario\'" class="btn btn-primary mt-2"                        (click)="agregarAlCarrito(juego)">                        Agregar al carrito                    </button>                    <!-- Mensaje si es admin -->                    <p *ngIf="sesion?.logueado && sesion?.tipo === \'admin\'" class="text-muted mt-2 fst-italic">                        (Solo los usuarios pueden agregar al carrito)                    </p>                </div>            </div>        </div>    </div></main></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecoverComponent', 'selector': 'app-recover'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CategoriaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoriaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

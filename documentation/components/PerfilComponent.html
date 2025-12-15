@@ -1,0 +1,822 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PerfilComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/perfil/perfil.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-perfil</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./perfil.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./perfil.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#formPerfil" >formPerfil</a>
+                            </li>
+                            <li>
+                                <a href="#mensaje" >mensaje</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarPassword" >mostrarPassword</a>
+                            </li>
+                            <li>
+                                <a href="#usuarios" >usuarios</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#guardarCambios" >guardarCambios</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#togglePassword" >togglePassword</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/perfil/perfil.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarCambios"></a>
+                    <span class="name">
+                        <span ><b>guardarCambios</b></span>
+                        <a href="#guardarCambios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarCambios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/perfil/perfil.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/perfil/perfil.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePassword"></a>
+                    <span class="name">
+                        <span ><b>togglePassword</b></span>
+                        <a href="#togglePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePassword()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/perfil/perfil.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formPerfil"></a>
+                    <span class="name">
+                        <span ><b>formPerfil</b></span>
+                        <a href="#formPerfil"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/perfil/perfil.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensaje"></a>
+                    <span class="name">
+                        <span ><b>mensaje</b></span>
+                        <a href="#mensaje"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/perfil/perfil.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarPassword"></a>
+                    <span class="name">
+                        <span ><b>mostrarPassword</b></span>
+                        <a href="#mostrarPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/perfil/perfil.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarios"></a>
+                    <span class="name">
+                        <span ><b>usuarios</b></span>
+                        <a href="#usuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/perfil/perfil.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+@Component({
+  selector: &#x27;app-perfil&#x27;,
+  templateUrl: &#x27;./perfil.component.html&#x27;,
+  styleUrls: [&#x27;./perfil.component.css&#x27;]
+})
+export class PerfilComponent implements OnInit {
+
+  formPerfil!: FormGroup;
+  usuarios: any[] &#x3D; [];
+  mensaje &#x3D; &#x27;&#x27;;
+
+  // Ver / ocultar contraseña
+  mostrarPassword &#x3D; false;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+
+    const sesionStr &#x3D; localStorage.getItem(&#x27;sesion&#x27;);
+    const sesion &#x3D; sesionStr ? JSON.parse(sesionStr) : null;
+
+    const usuariosStr &#x3D; localStorage.getItem(&#x27;usuarios&#x27;);
+    this.usuarios &#x3D; usuariosStr ? JSON.parse(usuariosStr) : [];
+
+    const usuarioCompleto &#x3D; this.usuarios.find(
+      u &#x3D;&gt; u.usuario &#x3D;&#x3D;&#x3D; sesion?.usuario
+    );
+
+    // Formulario
+    this.formPerfil &#x3D; this.fb.group({
+      nombre: [usuarioCompleto?.nombre, Validators.required],
+
+      usuario: [usuarioCompleto?.usuario, Validators.required],
+
+      email: [{ value: usuarioCompleto?.email, disabled: true }],
+
+      password: [
+        usuarioCompleto?.password,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(/^(?&#x3D;.*[A-Z])(?&#x3D;.*\d).+$/)
+        ]
+      ],
+
+      tipo: [{ value: usuarioCompleto?.tipo, disabled: true }]
+    });
+  }
+
+  // Ver/ocultar password
+  togglePassword() {
+    this.mostrarPassword &#x3D; !this.mostrarPassword;
+  }
+
+  guardarCambios() {
+    if (this.formPerfil.invalid) {
+      this.formPerfil.markAllAsTouched();
+      return;
+    }
+
+    const datos &#x3D; this.formPerfil.getRawValue();
+
+    const index &#x3D; this.usuarios.findIndex(u &#x3D;&gt; u.usuario &#x3D;&#x3D;&#x3D; datos.usuario);
+
+    if (index !&#x3D;&#x3D; -1) {
+      this.usuarios[index] &#x3D; { ...this.usuarios[index], ...datos };
+
+      localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(this.usuarios));
+      localStorage.setItem(&#x27;sesion&#x27;, JSON.stringify(this.usuarios[index]));
+
+      this.mensaje &#x3D; &#x27;Cambios guardados correctamente.&#x27;;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h2 class&#x3D;&quot;text-center mb-4&quot;&gt;Mi Perfil&lt;/h2&gt;
+
+&lt;div class&#x3D;&quot;card mx-auto&quot; style&#x3D;&quot;max-width: 420px;&quot;&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+
+    &lt;form [formGroup]&#x3D;&quot;formPerfil&quot; (ngSubmit)&#x3D;&quot;guardarCambios()&quot;&gt;
+
+      &lt;!-- Nombre --&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;label class&#x3D;&quot;form-label fw-bold&quot;&gt;Nombre&lt;/label&gt;
+        &lt;input class&#x3D;&quot;form-control&quot;
+               formControlName&#x3D;&quot;nombre&quot;
+               [class.is-invalid]&#x3D;&quot;formPerfil.get(&#x27;nombre&#x27;)?.touched &amp;&amp; formPerfil.get(&#x27;nombre&#x27;)?.invalid&quot;&gt;
+
+        &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;El nombre es obligatorio.&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Usuario --&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;label class&#x3D;&quot;form-label fw-bold&quot;&gt;Usuario&lt;/label&gt;
+        &lt;input class&#x3D;&quot;form-control&quot;
+               formControlName&#x3D;&quot;usuario&quot;
+               [class.is-invalid]&#x3D;&quot;formPerfil.get(&#x27;usuario&#x27;)?.touched &amp;&amp; formPerfil.get(&#x27;usuario&#x27;)?.invalid&quot;&gt;
+
+        &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;El usuario es obligatorio.&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Email (no editable) --&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;label class&#x3D;&quot;form-label fw-bold&quot;&gt;Email&lt;/label&gt;
+        &lt;input class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Password --&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;label class&#x3D;&quot;form-label fw-bold&quot;&gt;Contraseña&lt;/label&gt;
+
+        &lt;div class&#x3D;&quot;input-group&quot;&gt;
+          &lt;input 
+            [type]&#x3D;&quot;mostrarPassword ? &#x27;text&#x27; : &#x27;password&#x27;&quot;
+            class&#x3D;&quot;form-control&quot;
+            formControlName&#x3D;&quot;password&quot;
+            [class.is-invalid]&#x3D;&quot;formPerfil.get(&#x27;password&#x27;)?.touched &amp;&amp; formPerfil.get(&#x27;password&#x27;)?.invalid&quot;&gt;
+
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary&quot; (click)&#x3D;&quot;togglePassword()&quot;&gt;
+            {{ mostrarPassword ? &#x27;Ocultar&#x27; : &#x27;Mostrar&#x27; }}
+          &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;formPerfil.get(&#x27;password&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;
+          La contraseña es obligatoria.
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;formPerfil.get(&#x27;password&#x27;)?.errors?.[&#x27;pattern&#x27;]&quot;&gt;
+          Debe incluir al menos una mayúscula y un número.
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Tipo --&gt;
+      &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+        &lt;label class&#x3D;&quot;form-label fw-bold&quot;&gt;Tipo de Usuario&lt;/label&gt;
+        &lt;input class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;tipo&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Botón --&gt;
+      &lt;div class&#x3D;&quot;d-grid&quot;&gt;
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot; [disabled]&#x3D;&quot;formPerfil.invalid&quot;&gt;
+          Guardar Cambios
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;text-success mt-3 text-center fw-bold&quot; *ngIf&#x3D;&quot;mensaje&quot;&gt;
+        {{ mensaje }}
+      &lt;/div&gt;
+
+    &lt;/form&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./perfil.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h2 class="text-center mb-4">Mi Perfil</h2><div class="card mx-auto" style="max-width: 420px;">  <div class="card-body">    <form [formGroup]="formPerfil" (ngSubmit)="guardarCambios()">      <!-- Nombre -->      <div class="mb-3">        <label class="form-label fw-bold">Nombre</label>        <input class="form-control"               formControlName="nombre"               [class.is-invalid]="formPerfil.get(\'nombre\')?.touched && formPerfil.get(\'nombre\')?.invalid">        <div class="invalid-feedback">El nombre es obligatorio.</div>      </div>      <!-- Usuario -->      <div class="mb-3">        <label class="form-label fw-bold">Usuario</label>        <input class="form-control"               formControlName="usuario"               [class.is-invalid]="formPerfil.get(\'usuario\')?.touched && formPerfil.get(\'usuario\')?.invalid">        <div class="invalid-feedback">El usuario es obligatorio.</div>      </div>      <!-- Email (no editable) -->      <div class="mb-3">        <label class="form-label fw-bold">Email</label>        <input class="form-control" formControlName="email">      </div>      <!-- Password -->      <div class="mb-3">        <label class="form-label fw-bold">Contraseña</label>        <div class="input-group">          <input             [type]="mostrarPassword ? \'text\' : \'password\'"            class="form-control"            formControlName="password"            [class.is-invalid]="formPerfil.get(\'password\')?.touched && formPerfil.get(\'password\')?.invalid">          <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">            {{ mostrarPassword ? \'Ocultar\' : \'Mostrar\' }}          </button>        </div>        <div class="invalid-feedback" *ngIf="formPerfil.get(\'password\')?.errors?.[\'required\']">          La contraseña es obligatoria.        </div>        <div class="invalid-feedback" *ngIf="formPerfil.get(\'password\')?.errors?.[\'pattern\']">          Debe incluir al menos una mayúscula y un número.        </div>      </div>      <!-- Tipo -->      <div class="mb-3">        <label class="form-label fw-bold">Tipo de Usuario</label>        <input class="form-control" formControlName="tipo">      </div>      <!-- Botón -->      <div class="d-grid">        <button type="submit" class="btn btn-primary" [disabled]="formPerfil.invalid">          Guardar Cambios        </button>      </div>      <div class="text-success mt-3 text-center fw-bold" *ngIf="mensaje">        {{ mensaje }}      </div>    </form>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecoverComponent', 'selector': 'app-recover'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PerfilComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PerfilComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Aquí definimos variables CSS reutilizables. Muy útil para mantener colores, fuentes, etc. */
+  --color-principal: #1f1f1f; /* Texto principal oscuro */
+  --color-secundario: #ff3c38; /* Color de acento (puede ser usado en botones, destacados) */
+  --fondo: #f3f3f3; /* Fondo general de la página */
+  --fuente: 'Segoe UI', sans-serif; /* Fuente moderna y limpia */
+}
+
+body {
+  /* Estilos generales para toda la página */
+  background-color: var(--fondo); /* Usamos la variable de fondo */
+  font-family: var(--fuente); /* Fuente definida arriba */
+  color: var(--color-principal); /* Color del texto principal */
+  margin: 0; /* Quitamos los márgenes por defecto */
+  padding: 0; /* Quitamos los espacios internos por defecto */
+}
+
+.logo {
+  /* Estilo aplicado a la imagen del logo */
+  display: block; /* Hace que la imagen se comporte como bloque (permite centrar) */
+  width: 150px; /* Ancho fijo */
+  margin: 1rem auto 0; /* Margen superior y centrado horizontal */
+}
+
+header {
+  /* Estilo para el encabezado */
+  text-align: center; /* Centra el texto horizontalmente */
+  padding-bottom: 1rem; /* Espacio debajo del header */
+}
+
+.categorias {
+  /* Contenedor de las categorías (los cuadros) */
+  display: flex; /* Activamos Flexbox para alineación flexible */
+  flex-wrap: wrap; /* Permite que los elementos pasen a nueva línea si no caben */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  gap: 1.5rem; /* Espacio entre cada tarjeta de categoría */
+  padding: 2rem; /* Espacio interno alrededor del contenedor */
+}
+
+.categoria {
+  /* Tarjeta individual de cada categoría */
+  width: 220px; /* Ancho fijo */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave alrededor */
+  transition: transform 0.3s ease; /* Animación al pasar el mouse */
+  text-align: center; /* Texto centrado */
+}
+
+.categoria:hover {
+  /* Estilo cuando el mouse pasa por encima */
+  transform: scale(1.05); /* Agranda ligeramente la tarjeta */
+}
+
+.categoria img {
+  /* Estilo para la imagen dentro de la tarjeta */
+  width: 100%; /* Ancho completo del contenedor */
+  height: 160px; /* Altura fija */
+  object-fit: cover; /* Recorta la imagen para que se adapte sin deformarse */
+  border-radius: 12px 12px 0 0; /* Bordes redondeados solo arriba */
+}
+
+.categoria h2 {
+  /* Estilo para los títulos dentro de las tarjetas */
+  margin: 0;
+  padding: 1rem;
+}
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+.img-categoria {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+/* Responsive design: adapta el diseño a pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .categorias {
+    flex-direction: column; /* En celulares, mostrar tarjetas en columna */
+    align-items: center; /* Centrar verticalmente */
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

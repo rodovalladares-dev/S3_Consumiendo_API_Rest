@@ -1,0 +1,164 @@
+<main class="container my-5">
+  <h1 class="text-center mb-4">Registro</h1>
+
+
+  <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+
+    <!-- =============================================== -->
+    <!-- NOMBRE COMPLETO -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre completo</label>
+      <input type="text" class="form-control" id="nombre" formControlName="nombre">
+      <div *ngIf="formRegistro.get('nombre')?.invalid && formRegistro.get('nombre')?.touched" class="text-danger">
+        El nombre es obligatorio y debe tener al menos 3 caracteres
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- USUARIO -->  
+
+    <div class="mb-3">
+      <label class="form-label">Nombre de usuario</label>
+
+      <input type="text" class="form-control" formControlName="usuario"
+        [class.is-invalid]="formRegistro.get('usuario')?.touched && formRegistro.get('usuario')?.invalid" />
+
+      <div class="invalid-feedback">
+        El usuario es obligatorio.
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- EMAIL -->
+    <div class="mb-3">
+      <label class="form-label">Correo electrónico</label>
+
+      <input type="email" class="form-control" formControlName="email"
+        [class.is-invalid]="formRegistro.get('email')?.touched && formRegistro.get('email')?.invalid" />
+
+      <div class="invalid-feedback" *ngIf="formRegistro.get('email')?.errors?.['required']">
+        El correo es obligatorio.
+      </div>
+
+      <div class="invalid-feedback" *ngIf="formRegistro.get('email')?.errors?.['email']">
+        El formato no es válido.
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- FECHA DE NACIMIENTO -->
+
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+
+      <input type="date" class="form-control" formControlName="fechaNacimiento" (input)="calcularEdadEnVivo($event)"
+        [class.is-invalid]="formRegistro.get('fechaNacimiento')?.touched && formRegistro.get('fechaNacimiento')?.invalid" />
+
+      <div class="invalid-feedback">
+        Debes ingresar tu fecha de nacimiento.
+      </div>
+
+      <!-- Mostrar edad calculada -->
+      <p class="text-muted mt-1" *ngIf="edadActual > 0">
+        Edad: {{ edadActual }} años
+      </p>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- CONTRASEÑA -->
+    <div class="mb-3">
+      <label class="form-label">Contraseña</label>
+
+      <!-- input-group para botón Mostrar/Ocultar -->
+      <div class="input-group">
+
+        <input [type]="mostrarPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+          [class.is-invalid]="
+            formRegistro.get('password')?.touched &&
+            formRegistro.get('password')?.invalid
+          " />
+
+        <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+          {{ mostrarPassword ? 'Ocultar' : 'Mostrar' }}
+        </button>
+      </div>
+
+      <!-- Validacion contraseña -->
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.get('password')?.errors?.['required']">
+        La contraseña es obligatoria.
+      </div>
+
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.get('password')?.errors?.['minlength']">
+        Debe tener al menos 6 caracteres.
+      </div>
+
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.get('password')?.errors?.['maxlength']">
+        No puede exceder los 18 caracteres.
+      </div>
+
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.get('password')?.errors?.['pattern']">
+        Debe incluir al menos una mayúscula y un número.
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- REPETIR CONTRASEÑA -->
+
+    <div class="mb-3">
+      <label class="form-label">Repetir contraseña</label>
+
+      <div class="input-group">
+
+        <input [type]="mostrarPassword2 ? 'text' : 'password'" class="form-control" formControlName="password2"
+          [class.is-invalid]="
+            (formRegistro.get('password2')?.touched &&
+             formRegistro.get('password2')?.invalid)
+            || formRegistro.errors?.['noCoinciden']
+          " />
+
+        <button type="button" class="btn btn-outline-secondary" (click)="togglePassword2()">
+          {{ mostrarPassword2 ? 'Ocultar' : 'Mostrar' }}
+        </button>
+
+      </div>
+
+      <!-- Feedback (grupal) -->
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.get('password2')?.errors?.['required']">
+        Debes repetir la contraseña.
+      </div>
+
+      <div class="invalid-feedback d-block" *ngIf="formRegistro.errors?.['noCoinciden']">
+        Las contraseñas no coinciden.
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+    <!-- MENSAJES GENERALES -->
+    <!-- =============================================== -->
+    <div *ngIf="error" class="alert alert-danger text-center">
+      {{ error }}
+    </div>
+
+    <div *ngIf="exito" class="alert alert-success text-center">
+      {{ exito }}
+    </div>
+
+    <!-- =============================================== -->
+    <!-- BOTONES -->
+    <!-- =============================================== -->
+  >
+    <button type="submit" class="btn btn-primary" [disabled]="formRegistro.invalid">Registrarse</button>
+    
+    <button type="button" class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+    
+    <div class="my-4">
+      <p class="text-center">
+        ¿Ya tienes cuenta? <button routerLink="/login" class="btn btn-success w-100 mt-3">Inicia
+          Sesión</button>
+      </p>
+      
+    </div>
+    <!-- </div> -->
+
+  </form>
+</main>

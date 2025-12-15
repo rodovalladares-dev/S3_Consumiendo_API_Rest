@@ -1,0 +1,17 @@
+.login-container {
+    /* 1. Define un ancho específico. Esto es esencial. */
+    width: 300px; 
+    
+    /* 2. Aplica márgenes horizontales automáticos. */
+    /* Establece los márgenes superior e inferior en un valor (ej: 50px)
+       y los márgenes izquierdo y derecho en 'auto'. 
+       Esto centra el bloque horizontalmente dentro de su contenedor.
+    */
+    margin: 50px auto; 
+    
+    /* Estilos adicionales que ya podrías tener: */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

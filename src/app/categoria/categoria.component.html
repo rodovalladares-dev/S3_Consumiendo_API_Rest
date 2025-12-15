@@ -1,0 +1,25 @@
+<main class="container my-5">
+    <h2 class="text-center mb-4 text-capitalize">Categoría: {{ categoria }}</h2>
+
+    <div class="row">
+        <div class="col-md-6 mb-4" *ngFor="let juego of juegos">
+            <div class="card h-100">
+                <img [src]="juego.imagen" class="card-img-top" [alt]="juego.titulo">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ juego.titulo }}</h5>
+                    <p class="card-text">{{ juego.descripcion }}</p>
+                    <!-- Botón para usuarios logueados tipo "usuario" -->
+                    <button *ngIf="sesion?.logueado && sesion?.tipo === 'usuario'" class="btn btn-primary mt-2"
+                        (click)="agregarAlCarrito(juego)">
+                        Agregar al carrito
+                    </button>
+
+                    <!-- Mensaje si es admin -->
+                    <p *ngIf="sesion?.logueado && sesion?.tipo === 'admin'" class="text-muted mt-2 fst-italic">
+                        (Solo los usuarios pueden agregar al carrito)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

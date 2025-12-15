@@ -1,0 +1,42 @@
+<h2 class="text-center mb-4">Mi Carrito</h2>
+
+<div *ngIf="carrito.length === 0" class="alert alert-info text-center">
+  Tu carrito está vacío.
+</div>
+
+<table *ngIf="carrito.length > 0" class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th>Juego</th>
+      <th>Categoría</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of carrito; let i = index">
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.categoria }}</td>
+      <td>${{ item.precio }}</td>
+      <td>
+        <input type="number" class="form-control form-control-sm" style="width: 70px; margin: auto;"
+               [(ngModel)]="item.cantidad" (change)="actualizarCantidad(i, item.cantidad)">
+      </td>
+      <td>${{ item.precio * item.cantidad }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="eliminar(i)">X</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="carrito.length > 0" class="text-end me-4 fs-5 fw-bold">
+  Total: ${{ total }}
+</div>
+
+<div *ngIf="carrito.length > 0" class="d-flex justify-content-center mt-4 gap-3">
+  <button class="btn btn-danger" (click)="vaciarCarrito()">Vaciar Carrito</button>
+  <button class="btn btn-success" (click)="comprar()">Comprar</button>
+</div>
